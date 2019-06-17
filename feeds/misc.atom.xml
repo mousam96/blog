@@ -8,7 +8,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;$[Y_i] = \beta_0 + \beta_1 [X_i]$&lt;/p&gt;
+&lt;p&gt;$\frac{n!}{k!(n-k)!} = \binom{n}{k}$
+$### $$ [Y_i] = \beta_0 + \beta_1 [X_i] $$$&lt;/p&gt;
 &lt;p&gt;\documentclass{article}
 \begin{document}&lt;/p&gt;
 &lt;h3&gt;$$ [Y_i] = \beta_0 + \beta_1 [X_i] $$&lt;/h3&gt;
