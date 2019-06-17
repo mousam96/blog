@@ -13,8 +13,323 @@
 <div class="row">
  <div class="col-md-8">
   <h3>First Blog Post!</h3>
-  <label>2019-06-13</label>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa. Cursus vitae congue mauris rhoncus. Pulvinar neque laoreet suspendisse interdum. Eu nisl nunc mi ipsum faucibus vitae. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Nibh tortor id aliquet lectus proin nibh nisl. Sit amet venenatis urna cursus eget. Amet consectetur adipiscing elit duis. Quam pellentesque nec nam aliquam sem et tortor. Congue nisi vitae suscipit tellus.</p>
+  <label>2019-06-17</label>
+  <p>This will be the first blog about machine learning and I plan to write about more complex models in the future. Stay tuned! But for right now, let’s focus on linear regression.</p>
+<p>In this blog post, I want to focus on the concept of linear regression and mainly on the implementation of it in Python. Linear regression is a statistical model that examines the linear relationship between two (Simple Linear Regression ) ,a dependent variable and independent variable(s). Linear relationship basically means that when one (or more) independent variables increases (or decreases), the dependent variable increases (or decreases) too.</p>
+<p>A linear relationship can be positive (independent variable goes up, dependent variable goes up).</p>
+<p>To give a practical example, we consider a dataset with 84 observations from different student with a single independent variable “SAT” and dependent variable “GPA”. What we need to find out is if there is any sort of correlation between these two variables. This is one of those examples where we know beforehand that there is some sort of correlation, as we know that experiece matters, but there is always a range within which this relation fluctuates, and there is no certan rules to establish the exact correlation. In this case we will be creating a simple model which will tell us what is the best fitting line for this relationship.</p>
+<h3>$$ [Y_i] = \beta_0 + \beta_1 [X_i] $$</h3>
+<p>$$
+\begin{eqnarray}
+Dependent &amp;\ variable \Rightarrow &amp; Y_i \
+Constant \Rightarrow &amp; \beta_0 \
+Coefficient  \Rightarrow &amp; \beta_1 \
+Independent &amp;\ variable \Rightarrow &amp; X_i \
+\end{eqnarray}
+$$</p>
+<h5>Importing the Relevant Libraries</h5>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="kn">as</span> <span class="nn">sm</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+
+
+<h5>Loading the Data</h5>
+<div class="highlight"><pre><span></span><span class="n">sat_gpa_csv</span> <span class="o">=</span> <span class="s1">&#39;datasets/sat_gpa.csv&#39;</span>
+
+<span class="n">sat_gpa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">sat_gpa_csv</span><span class="p">)</span>
+</pre></div>
+
+
+<h5>Visualizing the Data Frame</h5>
+<div class="highlight"><pre><span></span><span class="n">sat_gpa</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SAT</th>
+      <th>GPA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1714</td>
+      <td>2.40</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1664</td>
+      <td>2.52</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1760</td>
+      <td>2.54</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1685</td>
+      <td>2.74</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1693</td>
+      <td>2.83</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><span class="n">sat_gpa</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SAT</th>
+      <th>GPA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>84.000000</td>
+      <td>84.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1845.273810</td>
+      <td>3.330238</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>104.530661</td>
+      <td>0.271617</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1634.000000</td>
+      <td>2.400000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1772.000000</td>
+      <td>3.190000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1846.000000</td>
+      <td>3.380000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1934.000000</td>
+      <td>3.502500</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2050.000000</td>
+      <td>3.810000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h5>Meaningful Regressions</h5>
+<p>Before we finish this introduction, we want to get this out of the way. Each time we create a regression, it should be meaningful. Why would we predict GPA with SAT? Well, the SAT is considered one of the best estimators of intellectual capacity and capability.</p>
+<p>On average, if you did well on your SAT, you will do well in college and at the workplace. Furthermore, almost all colleges across the USA are using the SAT as a proxy for admission.</p>
+<h5>Creating our Regression</h5>
+<div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">sat_gpa</span><span class="p">[</span><span class="s1">&#39;GPA&#39;</span><span class="p">]</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">sat_gpa</span><span class="p">[</span><span class="s1">&#39;SAT&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<h5>Exploring the Data</h5>
+<p>Using Simple plt Function</p>
+<div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;SAT&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;GPA&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
+</pre></div>
+
+
+<p><img alt="png" src="images/Linear_Regression_in_Python_16_0.png"></p>
+<h5>Adding a Constant</h5>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>/Users/mousa/anaconda3/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2389: FutureWarning: Method .ptp is deprecated and will be removed in a future version. Use numpy.ptp instead.
+  return ptp(axis=axis, out=out, **kwargs)
+</pre></div>
+
+
+<table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>GPA</td>       <th>  R-squared:         </th> <td>   0.406</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.399</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   56.05</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Mon, 17 Jun 2019</td> <th>  Prob (F-statistic):</th> <td>7.20e-11</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>09:37:07</td>     <th>  Log-Likelihood:    </th> <td>  12.672</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>    84</td>      <th>  AIC:               </th> <td>  -21.34</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    82</td>      <th>  BIC:               </th> <td>  -16.48</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+
+<table class="simpletable">
+<tr>
+    <td></td>       <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>const</th> <td>    0.2750</td> <td>    0.409</td> <td>    0.673</td> <td> 0.503</td> <td>   -0.538</td> <td>    1.088</td>
+</tr>
+<tr>
+  <th>SAT</th>   <td>    0.0017</td> <td>    0.000</td> <td>    7.487</td> <td> 0.000</td> <td>    0.001</td> <td>    0.002</td>
+</tr>
+</table>
+
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>12.839</td> <th>  Durbin-Watson:     </th> <td>   0.950</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.002</td> <th>  Jarque-Bera (JB):  </th> <td>  16.155</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.722</td> <th>  Prob(JB):          </th> <td>0.000310</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 4.590</td> <th>  Cond. No.          </th> <td>3.29e+04</td>
+</tr>
+</table>
+
+<p><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 3.29e+04. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</p>
+<h5>These 3 Main Tables are very important helping as reaching our best model,Especially The Coefficients Table which shows the const is 0.275, which means b0 is 0.275 ,also The SAT coefficient is 0.0017. This is our b1. These are the only two numbers we need to define the regression equation.</h5>
+<p>Therefore,</p>
+<h3>$$ [ŷ] = 0.275 + 0.0017 [X_1] $$</h3>
+<div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">yhat</span> <span class="o">=</span> <span class="mf">0.0017</span><span class="o">*</span><span class="n">x1</span> <span class="o">+</span> <span class="mf">0.275</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">yhat</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;regression line&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;SAT&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;GPA&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="png" src="images/Linear_Regression_in_Python_21_0.png"></p>
+<h4>Using sklearn to predict the plt</h4>
+<p>To perfor a simple linear regression in Python the fist step is to preprocess the data in order to split our data. Then, what we need to do is to import from sklearn library the linear model sub library, and with the linear regression class we are going to create an object called REGRESSOR using the FIT method.</p>
+<p>The next step is to predict the test set results in a vector of predictions of dependent variables y_pred, by using the method PREDICT.</p>
+<p>Last step is to visualise our outputs in order to interpret the results. Here we use a function of PYPLOT called SCATTER to make a scatter plot of points, and a plot of the regressor line with the function PLOT, for both the training and test sets</p>
+<div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">=</span> <span class="n">sat_gpa</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span> <span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span> <span class="p">,</span> <span class="p">:</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Splitting the dataset into the Training set and Test Set</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Fitting Simple Linear Regression model to the training set</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predicting the Test set results</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Visualising the Training set resuts</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;SAT vs GPA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;SAT&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;GPA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Visualising the Test set resuts</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;SAT vs GPA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;SAT&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;GPA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="png" src="images/Linear_Regression_in_Python_26_0.png"></p>
+<p><img alt="png" src="images/Linear_Regression_in_Python_26_1.png"></p>
+<p>Observing all data points, we can see that there is a strong relationship between SAT and GPA. In general, the higher the SAT of a student, the higher their GPA.</p>
  </div>
 </div>
  </div>
