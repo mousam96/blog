@@ -4,7 +4,7 @@
 &lt;p&gt;In this blog post, I want to focus on the concept of linear regression and mainly on the implementation of it in Python. Linear regression is a statistical model that examines the linear relationship between two (Simple Linear Regression ) ,a dependent variable and independent variable(s). Linear relationship basically means that when one (or more) independent variables increases (or decreases), the dependent variable increases (or decreases) too.&lt;/p&gt;
 &lt;p&gt;A linear relationship can be positive (independent variable goes up, dependent variable goes up).&lt;/p&gt;
 &lt;p&gt;To give a practical example, we consider a dataset with 84 observations from different student with a single independent variable “SAT” and dependent variable “GPA”. What we need to find out is if there is any sort of correlation between these two variables. This is one of those examples where we know beforehand that there is some sort of correlation, as we know that experiece matters, but there is always a range within which this relation fluctuates, and there is no certan rules to establish the exact correlation. In this case we will be creating a simple model which will tell us what is the best fitting line for this relationship.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="alt text" height="140" src="images/1.png" width="220"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="alt text" height="150" src="images/1.png" width="225"&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;!--
 &lt;center&gt;![equation](https://latex.codecogs.com/png.latex?%5Cinline%20%5Cdpi%7B300%7D%20%5Cbg_white%20%5Ctiny%20%24%5BY_i%5D%20%3D%20%5Cbeta_0%20&amp;plus;%20%5Cbeta_1%20%5BX_i%5D)&lt;/center&gt; --&gt;
 
@@ -260,7 +260,7 @@ $$ --&gt;
 &lt;p&gt;&lt;br/&gt;&lt;br/&gt;Warnings:&lt;br/&gt;[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.&lt;br/&gt;[2] The condition number is large, 3.29e+04. This might indicate that there are&lt;br/&gt;strong multicollinearity or other numerical problems.&lt;/p&gt;
 &lt;h5&gt;These 3 Main Tables are very important helping as reaching our best model,Especially The Coefficients Table which shows the const is 0.275, which means b0 is 0.275 ,also The SAT coefficient is 0.0017. This is our b1. These are the only two numbers we need to define the regression equation.&lt;/h5&gt;
 &lt;p&gt;Therefore,&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;img alt="alt text" src="images/2.png"&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;img alt="alt text" height="150" src="images/2.png" width="225"&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;yhat&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.0017&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mf"&gt;0.275&lt;/span&gt;
