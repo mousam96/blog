@@ -18,17 +18,19 @@
 <p>In this blog post, I want to focus on the concept of linear regression and mainly on the implementation of it in Python. Linear regression is a statistical model that examines the linear relationship between two (Simple Linear Regression ) ,a dependent variable and independent variable(s). Linear relationship basically means that when one (or more) independent variables increases (or decreases), the dependent variable increases (or decreases) too.</p>
 <p>A linear relationship can be positive (independent variable goes up, dependent variable goes up).</p>
 <p>To give a practical example, we consider a dataset with 84 observations from different student with a single independent variable “SAT” and dependent variable “GPA”. What we need to find out is if there is any sort of correlation between these two variables. This is one of those examples where we know beforehand that there is some sort of correlation, as we know that experiece matters, but there is always a range within which this relation fluctuates, and there is no certan rules to establish the exact correlation. In this case we will be creating a simple model which will tell us what is the best fitting line for this relationship.</p>
-<p><center><img alt="alt text" src="images/1.png"></center></p>
-<p><center><img alt="png" src="images/1.png"></center></p>
-<p><center><img alt="equation" src="https://latex.codecogs.com/png.latex?%5Cinline%20%5Cdpi%7B300%7D%20%5Cbg_white%20%5Ctiny%20%24%5BY_i%5D%20%3D%20%5Cbeta_0%20&plus;%20%5Cbeta_1%20%5BX_i%5D"></center></p>
-<p>$$
+<p><center><img alt="alt text" src="images/1.png = 100x20"></center></p>
+<!--
+<center>![equation](https://latex.codecogs.com/png.latex?%5Cinline%20%5Cdpi%7B300%7D%20%5Cbg_white%20%5Ctiny%20%24%5BY_i%5D%20%3D%20%5Cbeta_0%20&plus;%20%5Cbeta_1%20%5BX_i%5D)</center> -->
+
+<!-- $$
 \begin{eqnarray}
-Dependent &amp;\ variable \Rightarrow &amp; Y_i \
-Constant \Rightarrow &amp; \beta_0 \
-Coefficient  \Rightarrow &amp; \beta_1 \
-Independent &amp;\ variable \Rightarrow &amp; X_i \
+Dependent &\ variable \Rightarrow & Y_i \\
+Constant \Rightarrow & \beta_0 \\
+Coefficient  \Rightarrow & \beta_1 \\
+Independent &\ variable \Rightarrow & X_i \\
 \end{eqnarray}
-$$</p>
+$$ -->
+
 <h5>Importing the Relevant Libraries</h5>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -272,7 +274,7 @@ $$</p>
 <p><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.<br/>[2] The condition number is large, 3.29e+04. This might indicate that there are<br/>strong multicollinearity or other numerical problems.</p>
 <h5>These 3 Main Tables are very important helping as reaching our best model,Especially The Coefficients Table which shows the const is 0.275, which means b0 is 0.275 ,also The SAT coefficient is 0.0017. This is our b1. These are the only two numbers we need to define the regression equation.</h5>
 <p>Therefore,</p>
-<h3>$$ [ŷ] = 0.275 + 0.0017 [X_1] $$</h3>
+<p><center><img alt="alt text" src="images/2.png"></center></p>
 <div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
 <span class="n">yhat</span> <span class="o">=</span> <span class="mf">0.0017</span><span class="o">*</span><span class="n">x1</span> <span class="o">+</span> <span class="mf">0.275</span>
