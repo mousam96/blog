@@ -13,8 +13,8 @@
 <div class="row">
  <div class="col-md-8">
   <h3>3d</h3>
-  <label>2019-06-17</label>
-  <p>This will be the first blog about machine learning and I plan to write about more complex models in the future. Stay tuned! But for right now, let’s focus on linear regression.</p>
+  <label>2019-07-01</label>
+  <p>This will be the Second blog about 3d plot and I plan to write about more complex models in the future. Stay tuned! But for right now, let’s focus on 3d plt</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -241,77 +241,52 @@
 
 
 <p><img alt="png" src="images/3d_10_0.png"></p>
-<div class="highlight"><pre><span></span><span class="c1"># set up the axes for the second plot</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>&lt;mpl_toolkits.mplot3d.art3d.Line3DCollection at 0x1a21e28a58&gt;
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">==============</span>
-<span class="sd">Contour Plots</span>
-<span class="sd">==============</span>
-<span class="sd">Plot a contour plot that shows intensity</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="c1"># Import libraries</span>
-
-
-<span class="c1"># Create figure object</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-
-<span class="c1"># Get the current axes, creating one if necessary.</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-
-<span class="c1"># Get test data</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">axes3d</span><span class="o">.</span><span class="n">get_test_data</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-
-<span class="c1"># Plot contour curves</span>
-<span class="n">cset</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">)</span>
-
-<span class="c1"># Set labels</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cset</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-
-<p><img alt="png" src="images/3d_14_0.png"></p>
-<div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">==============</span>
-<span class="sd">Contour Plots</span>
-<span class="sd">==============</span>
-<span class="sd">Plot a contour plot that shows intensity</span>
-<span class="sd">&#39;&#39;&#39;</span>
+<h1>'''</h1>
+<h1>Contour Plots</h1>
+<p>Plot a contour plot that shows intensity
+'''</p>
+<h1>Import libraries</h1>
+<h1>Create figure object</h1>
+<p>fig = plt.figure()</p>
+<h1>Get the current axes, creating one if necessary.</h1>
+<p>ax = fig.gca(projection='3d')</p>
+<h1>Get test data</h1>
+<p>X, Y, Z = axes3d.get_test_data(0.05)</p>
+<h1>Plot contour curves</h1>
+<p>cset = ax.contour(X, Y, Z, cmap=cm.coolwarm)</p>
+<h1>Set labels</h1>
+<p>ax.clabel(cset, fontsize=9, inline=1)</p>
+<p>plt.show()</p>
+<div class="highlight"><pre><span></span>![png](images/3d_14_0.png)
 
 
 
-<span class="c1"># Create figure object</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+```python
+&#39;&#39;&#39;
+==============
+Contour Plots
+==============
+Plot a contour plot that shows intensity
+&#39;&#39;&#39;
 
-<span class="c1"># Get the current axes, creating one if necessary.</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 
-<span class="c1"># Get test data</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">axes3d</span><span class="o">.</span><span class="n">get_test_data</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 
-<span class="c1"># Plot contour curves</span>
-<span class="n">cset</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">)</span>
+# Create figure object
+fig = plt.figure()
 
-<span class="c1"># Set labels</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cset</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+# Get the current axes, creating one if necessary.
+ax = fig.gca(projection=&#39;3d&#39;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+# Get test data
+X, Y, Z = axes3d.get_test_data(0.05)
+
+# Plot contour curves
+cset = ax.contourf(X, Y, Z, cmap=cm.coolwarm)
+
+# Set labels
+ax.clabel(cset, fontsize=9, inline=1)
+
+plt.show()
 </pre></div>
 
 
@@ -411,8 +386,6 @@
 
 
 <p><img alt="Alt Text" src="images/x.gif"></p>
-<div class="highlight"><pre><span></span>
-</pre></div>
  </div>
 </div>
  </div>
