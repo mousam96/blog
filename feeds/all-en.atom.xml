@@ -351,6 +351,7 @@ if (outputEl) {{
             &lt;/script&gt;
         &lt;/div&gt;
 
+&lt;p&gt;&lt;img alt="png" src="images/plt.png"&gt;&lt;/p&gt;
 &lt;p&gt;here were 3d plot shine&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;global&lt;/span&gt; &lt;span class="n"&gt;grafico&lt;/span&gt; &lt;span class="c1"&gt;#figure&lt;/span&gt;
 &lt;span class="c1"&gt;#Function scatter_plot group data by argument name, plot and edit labels&lt;/span&gt;
