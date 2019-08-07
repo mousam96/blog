@@ -1704,7 +1704,78 @@ The number of effective samples is smaller than 25% for some parameters.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="png" src="images/ArViz_Bayes_17_0.png"&gt;&lt;/p&gt;</content><category term="python"></category></entry><entry><title>3d plotting in Python</title><link href="https://mousam96.github.io/blog/blog-2.html" rel="alternate"></link><published>2019-07-01T20:00:00-04:00</published><updated>2019-07-01T20:00:00-04:00</updated><author><name>Mousa Smady</name></author><id>tag:mousam96.github.io,2019-07-01:/blog/blog-2.html</id><summary type="html">&lt;h1&gt;3d plotting&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="png" src="images/ArViz_Bayes_17_0.png"&gt;&lt;/p&gt;</content><category term="python"></category></entry><entry><title>pipenv</title><link href="https://mousam96.github.io/blog/blog-5.html" rel="alternate"></link><published>2019-07-03T20:00:00-04:00</published><updated>2019-07-03T20:00:00-04:00</updated><author><name>Mousa Smady</name></author><id>tag:mousam96.github.io,2019-07-03:/blog/blog-5.html</id><summary type="html">&lt;p&gt;pipenv automatically creates and manages virtual environments for your projects as you go. use python versions as required, which is life changing.&lt;/p&gt;
+&lt;p&gt;On MacOS, installation is as easy as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pipenv&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Collecting pipenv
+[?25l  Downloading https://files.pythonhosted.org/packages/13/b4/3ffa55f77161cff9a5220f162670f7c5eb00df52e00939e203f601b0f579/pipenv-2018.11.26-py3-none-any.whl (5.2MB …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;pipenv automatically creates and manages virtual environments for your projects as you go. use python versions as required, which is life changing.&lt;/p&gt;
+&lt;p&gt;On MacOS, installation is as easy as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pipenv&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Collecting pipenv
+[?25l  Downloading https://files.pythonhosted.org/packages/13/b4/3ffa55f77161cff9a5220f162670f7c5eb00df52e00939e203f601b0f579/pipenv-2018.11.26-py3-none-any.whl (5.2MB)
+[K    100% |████████████████████████████████| 5.2MB 5.9MB/s eta 0:00:01
+[?25hRequirement already satisfied: certifi in /Users/mousa/anaconda3/lib/python3.7/site-packages (from pipenv) (2019.3.9)
+Collecting virtualenv (from pipenv)
+[?25l  Downloading https://files.pythonhosted.org/packages/db/9e/df208b2baad146fe3fbe750eacadd6e49bcf2f2c3c1117b7192a7b28aec4/virtualenv-16.7.2-py2.py3-none-any.whl (3.3MB)
+[K    100% |████████████████████████████████| 3.3MB 7.8MB/s eta 0:00:01
+[?25hRequirement already satisfied: setuptools&amp;gt;=36.2.1 in /Users/mousa/anaconda3/lib/python3.7/site-packages (from pipenv) (41.0.1)
+Collecting virtualenv-clone&amp;gt;=0.2.5 (from pipenv)
+  Downloading https://files.pythonhosted.org/packages/ba/f8/50c2b7dbc99e05fce5e5b9d9a31f37c988c99acd4e8dedd720b7b8d4011d/virtualenv_clone-0.5.3-py2.py3-none-any.whl
+Requirement already satisfied: pip&amp;gt;=9.0.1 in /Users/mousa/anaconda3/lib/python3.7/site-packages (from pipenv) (19.0.3)
+Installing collected packages: virtualenv, virtualenv-clone, pipenv
+Successfully installed pipenv-2018.11.26 virtualenv-16.7.2 virtualenv-clone-0.5.3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;you can create your virtual environment using pipenv by typing in the terminal:&lt;/p&gt;
+&lt;p&gt;pipenv --python python3&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/1_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;To Activate the environment :&lt;/p&gt;
+&lt;p&gt;pipenv shell&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/2_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;you can see where the Environment is saved /Users/mousa/.local/share/virtualenvs/blog5-1PKKBq4C&lt;/p&gt;
+&lt;p&gt;To check our installed backpages  &lt;/p&gt;
+&lt;p&gt;pip freeze&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/3.png"&gt;&lt;/p&gt;
+&lt;p&gt;as you can see we did not install any backpages yet but we can check our python version.&lt;/p&gt;
+&lt;p&gt;python -V&lt;/p&gt;
+&lt;p&gt;while activating your environment there is new file created (Pipfile)&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/4.png"&gt;&lt;/p&gt;
+&lt;p&gt;[[source]]: where you are downloading your packages from&lt;/p&gt;
+&lt;p&gt;[packages] :package requirements for running the application and its versions&lt;/p&gt;
+&lt;p&gt;(which packages you will use when running the application).&lt;/p&gt;
+&lt;p&gt;[dev-packages]: package requirements for developing the application and its versions&lt;/p&gt;
+&lt;p&gt;(which packaes you will use when developing the application)&lt;/p&gt;
+&lt;p&gt;[requires]: required Python version&lt;/p&gt;
+&lt;p&gt;To install th Pipfile:&lt;/p&gt;
+&lt;p&gt;pipenv install&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/5.png"&gt;&lt;/p&gt;
+&lt;p&gt;new file created (Pipfile.lock)&lt;/p&gt;
+&lt;p&gt;The Pipfile.lock is intended to specify, based on the packages present in Pipfile, which specific version of those should be used, avoiding the risks of automatically upgrading packages that depend upon each other and breaking your project dependency tree.&lt;/p&gt;
+&lt;p&gt;You can lock your currently installed packages using&lt;/p&gt;
+&lt;p&gt;Install Packages&lt;/p&gt;
+&lt;p&gt;pipenv install django==1.11.10&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/6.png"&gt;&lt;/p&gt;
+&lt;p&gt;you can see change in the Pipfile&lt;/p&gt;
+&lt;p&gt;[packages]&lt;/p&gt;
+&lt;p&gt;django = "==1.11.10"&lt;/p&gt;
+&lt;p&gt;you can install without a specific version which mean the latest one&lt;/p&gt;
+&lt;p&gt;pipenv install requests&lt;/p&gt;
+&lt;p&gt;So after adding some Packages you can check them:&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/7.png"&gt;&lt;/p&gt;
+&lt;p&gt;you can update the Packages:&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/8.png"&gt;&lt;/p&gt;
+&lt;p&gt;pipenv update requests&lt;/p&gt;
+&lt;p&gt;you can install the version you want Manually:&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/9.png"&gt;&lt;/p&gt;
+&lt;p&gt;pipenv install requests==2.22.0&lt;/p&gt;
+&lt;h1&gt;IT's SIMPLY Virtual Environments Manager for Python&lt;/h1&gt;</content><category term="python"></category></entry><entry><title>3d plotting in Python</title><link href="https://mousam96.github.io/blog/blog-2.html" rel="alternate"></link><published>2019-07-01T20:00:00-04:00</published><updated>2019-07-01T20:00:00-04:00</updated><author><name>Mousa Smady</name></author><id>tag:mousam96.github.io,2019-07-01:/blog/blog-2.html</id><summary type="html">&lt;h1&gt;3d plotting&lt;/h1&gt;
 &lt;p&gt;This will be the second blog about 3d plotting and I plan to write about more complex blog in the future. Stay tuned! But for right now, let’s focus on 3d plotting.&lt;/p&gt;
 &lt;p&gt;In this blog post, I want to focus on the concept of 3d plotting and …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;3d plotting&lt;/h1&gt;
 &lt;p&gt;This will be the second blog about 3d plotting and I plan to write about more complex blog in the future. Stay tuned! But for right now, let’s focus on 3d plotting.&lt;/p&gt;
@@ -2071,78 +2142,7 @@ The number of effective samples is smaller than 25% for some parameters.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="Alt Text" src="images/x.gif"&gt;&lt;/p&gt;</content><category term="python"></category></entry><entry><title>pipenv</title><link href="https://mousam96.github.io/blog/blog-5.html" rel="alternate"></link><published>2019-07-01T20:00:00-04:00</published><updated>2019-07-01T20:00:00-04:00</updated><author><name>Mousa Smady</name></author><id>tag:mousam96.github.io,2019-07-01:/blog/blog-5.html</id><summary type="html">&lt;p&gt;pipenv automatically creates and manages virtual environments for your projects as you go. use python versions as required, which is life changing.&lt;/p&gt;
-&lt;p&gt;On MacOS, installation is as easy as:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pipenv&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Collecting pipenv
-[?25l  Downloading https://files.pythonhosted.org/packages/13/b4/3ffa55f77161cff9a5220f162670f7c5eb00df52e00939e203f601b0f579/pipenv-2018.11.26-py3-none-any.whl (5.2MB …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;pipenv automatically creates and manages virtual environments for your projects as you go. use python versions as required, which is life changing.&lt;/p&gt;
-&lt;p&gt;On MacOS, installation is as easy as:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pipenv&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Collecting pipenv
-[?25l  Downloading https://files.pythonhosted.org/packages/13/b4/3ffa55f77161cff9a5220f162670f7c5eb00df52e00939e203f601b0f579/pipenv-2018.11.26-py3-none-any.whl (5.2MB)
-[K    100% |████████████████████████████████| 5.2MB 5.9MB/s eta 0:00:01
-[?25hRequirement already satisfied: certifi in /Users/mousa/anaconda3/lib/python3.7/site-packages (from pipenv) (2019.3.9)
-Collecting virtualenv (from pipenv)
-[?25l  Downloading https://files.pythonhosted.org/packages/db/9e/df208b2baad146fe3fbe750eacadd6e49bcf2f2c3c1117b7192a7b28aec4/virtualenv-16.7.2-py2.py3-none-any.whl (3.3MB)
-[K    100% |████████████████████████████████| 3.3MB 7.8MB/s eta 0:00:01
-[?25hRequirement already satisfied: setuptools&amp;gt;=36.2.1 in /Users/mousa/anaconda3/lib/python3.7/site-packages (from pipenv) (41.0.1)
-Collecting virtualenv-clone&amp;gt;=0.2.5 (from pipenv)
-  Downloading https://files.pythonhosted.org/packages/ba/f8/50c2b7dbc99e05fce5e5b9d9a31f37c988c99acd4e8dedd720b7b8d4011d/virtualenv_clone-0.5.3-py2.py3-none-any.whl
-Requirement already satisfied: pip&amp;gt;=9.0.1 in /Users/mousa/anaconda3/lib/python3.7/site-packages (from pipenv) (19.0.3)
-Installing collected packages: virtualenv, virtualenv-clone, pipenv
-Successfully installed pipenv-2018.11.26 virtualenv-16.7.2 virtualenv-clone-0.5.3
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;you can create your virtual environment using pipenv by typing in the terminal:&lt;/p&gt;
-&lt;p&gt;pipenv --python python3&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/1_1.png"&gt;&lt;/p&gt;
-&lt;p&gt;To Activate the environment :&lt;/p&gt;
-&lt;p&gt;pipenv shell&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/2_2.png"&gt;&lt;/p&gt;
-&lt;p&gt;you can see where the Environment is saved /Users/mousa/.local/share/virtualenvs/blog5-1PKKBq4C&lt;/p&gt;
-&lt;p&gt;To check our installed backpages  &lt;/p&gt;
-&lt;p&gt;pip freeze&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/3.png"&gt;&lt;/p&gt;
-&lt;p&gt;as you can see we did not install any backpages yet but we can check our python version.&lt;/p&gt;
-&lt;p&gt;python -V&lt;/p&gt;
-&lt;p&gt;while activating your environment there is new file created (Pipfile)&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/4.png"&gt;&lt;/p&gt;
-&lt;p&gt;[[source]]: where you are downloading your packages from&lt;/p&gt;
-&lt;p&gt;[packages] :package requirements for running the application and its versions&lt;/p&gt;
-&lt;p&gt;(which packages you will use when running the application).&lt;/p&gt;
-&lt;p&gt;[dev-packages]: package requirements for developing the application and its versions&lt;/p&gt;
-&lt;p&gt;(which packaes you will use when developing the application)&lt;/p&gt;
-&lt;p&gt;[requires]: required Python version&lt;/p&gt;
-&lt;p&gt;To install th Pipfile:&lt;/p&gt;
-&lt;p&gt;pipenv install&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/5.png"&gt;&lt;/p&gt;
-&lt;p&gt;new file created (Pipfile.lock)&lt;/p&gt;
-&lt;p&gt;The Pipfile.lock is intended to specify, based on the packages present in Pipfile, which specific version of those should be used, avoiding the risks of automatically upgrading packages that depend upon each other and breaking your project dependency tree.&lt;/p&gt;
-&lt;p&gt;You can lock your currently installed packages using&lt;/p&gt;
-&lt;p&gt;Install Packages&lt;/p&gt;
-&lt;p&gt;pipenv install django==1.11.10&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/6.png"&gt;&lt;/p&gt;
-&lt;p&gt;you can see change in the Pipfile&lt;/p&gt;
-&lt;p&gt;[packages]&lt;/p&gt;
-&lt;p&gt;django = "==1.11.10"&lt;/p&gt;
-&lt;p&gt;you can install without a specific version which mean the latest one&lt;/p&gt;
-&lt;p&gt;pipenv install requests&lt;/p&gt;
-&lt;p&gt;So after adding some Packages you can check them:&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/7.png"&gt;&lt;/p&gt;
-&lt;p&gt;you can update the Packages:&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/8.png"&gt;&lt;/p&gt;
-&lt;p&gt;pipenv update requests&lt;/p&gt;
-&lt;p&gt;you can install the version you want Manually:&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/9.png"&gt;&lt;/p&gt;
-&lt;p&gt;pipenv install requests==2.22.0&lt;/p&gt;
-&lt;h1&gt;IT's SIMPLY Virtual Environments Manager for Python&lt;/h1&gt;</content><category term="python"></category></entry><entry><title>Linear Regression in Python</title><link href="https://mousam96.github.io/blog/blog-1.html" rel="alternate"></link><published>2019-06-17T20:00:00-04:00</published><updated>2019-06-17T20:00:00-04:00</updated><author><name>Mousa Smady</name></author><id>tag:mousam96.github.io,2019-06-17:/blog/blog-1.html</id><summary type="html">&lt;p&gt;This will be the first blog about machine learning and I plan to write about more complex models in the future. Stay tuned! But for right now, let’s focus on linear regression.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt Text" src="images/x.gif"&gt;&lt;/p&gt;</content><category term="python"></category></entry><entry><title>Linear Regression in Python</title><link href="https://mousam96.github.io/blog/blog-1.html" rel="alternate"></link><published>2019-06-17T20:00:00-04:00</published><updated>2019-06-17T20:00:00-04:00</updated><author><name>Mousa Smady</name></author><id>tag:mousam96.github.io,2019-06-17:/blog/blog-1.html</id><summary type="html">&lt;p&gt;This will be the first blog about machine learning and I plan to write about more complex models in the future. Stay tuned! But for right now, let’s focus on linear regression.&lt;/p&gt;
 &lt;p&gt;In this blog post, I want to focus on the concept of linear regression and mainly on …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This will be the first blog about machine learning and I plan to write about more complex models in the future. Stay tuned! But for right now, let’s focus on linear regression.&lt;/p&gt;
 &lt;p&gt;In this blog post, I want to focus on the concept of linear regression and mainly on the implementation of it in Python. Linear regression is a statistical model that examines the linear relationship between two (Simple Linear Regression ) ,a dependent variable and independent variable(s). Linear relationship basically means that when one (or more) independent variables increases (or decreases), the dependent variable increases (or decreases) too.&lt;/p&gt;
 &lt;p&gt;A linear relationship can be positive (independent variable goes up, dependent variable goes up).&lt;/p&gt;
